@@ -31,7 +31,7 @@ class SkipGramModel:
     with tf.name_scope("data"):
       self.centers = tf.placeholder(tf.int32, [self.hps.num_pairs], name='centers')
       self.targets = tf.placeholder(tf.int32, [self.hps.num_pairs, 1], name='targets')
-      dataset = tf.contrib.data.Dataset.from_tensor_slices((self.centers, self.targets))
+      dataset = tf.data.Dataset.from_tensor_slices((self.centers, self.targets))
       dataset = dataset.repeat() # # Repeat the input indefinitely
       dataset = dataset.batch(self.hps.batch_size)
       
